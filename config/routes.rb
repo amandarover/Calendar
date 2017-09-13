@@ -1,3 +1,5 @@
+# Tells Rails how to connect incoming requests to controllers and actions
+
 Rails.application.routes.draw do
   get 'hello_world/index'
 
