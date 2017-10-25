@@ -1,31 +1,40 @@
 <html>
   <body>
-    <h1>Listing Books</h1>
+    <!-- <p id="notice"><%#= notice %></p> -->
+    <h1>Listing Events</h1>
 
     <table>
-      <tr>
-        <th>Title</th>
-        <th>Summary</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-    <% if @events %>
-      <% @events.each do |event| %>
+      <thead>
         <tr>
-          <td><%= event.title %></td>
-          <td><%= event.content %></td>
-          <td><%= link_to "Show", event %></td>
-          <td><%= link_to "Edit", edit_event_path(event) %></td>
-          <td><%= link_to "Remove", event, method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Hour</th>
+          <th>Description</th>
+          <th>Local</th>
+          <th>Repeating frequency</th>
+          <th colspan="3"></th>
         </tr>
+      </thead>
+
+      <% if @events %>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.date %></td>
+            <td><%= event.hour %></td>
+            <td><%= event.description %></td>
+            <td><%= event.local %></td>
+            <td><%= event.repeating_frequency %></td>
+            <td><%= link_to 'Show', event %></td>
+            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
     </table>
 
     <br>
     <a href="/events/new">New Event</a>
-    <!-- <%= link_to "New event", events_path %> -->
+    <!-- <%#= link_to 'New Event', new_event_path %> -->
   </body>
 </html>
