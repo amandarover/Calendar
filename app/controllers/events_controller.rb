@@ -5,8 +5,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params)
-    @event.save
+    @event = Event.new(event_params)
+    @event.save!
     redirect_to @event
+  end
+
+  private
+  def event_params
+    params.permit(:name, :date, :hour, :description, :local, :repeating_frequency)
   end
 end
