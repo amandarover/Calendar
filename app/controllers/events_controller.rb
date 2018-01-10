@@ -24,6 +24,13 @@ class EventsController < ApplicationController
   end
 
   def update
+    @events = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to @article
+    else
+      render 'edit'
+    end
   end
 
   def destroy
