@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     @events = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to @article
+      redirect_to @event
     else
       render 'edit'
     end
